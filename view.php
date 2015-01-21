@@ -75,7 +75,7 @@ Global $USER;
 echo $OUTPUT->heading($USER->username);
 $username=$USER->username;
 if(has_capability('mod/intervideoold:view',$context)&&has_capability('mod/intervideoold:submit',$context)){
-	echo "<iframe src='cacophony-test/index.html?username=$username' width=100% height=700px>
+	echo "<iframe src='cacophony/index.html?username=$username' width=100% height=700px>
 				<p>Your browser does not support iframes.</p>
 			</iframe>";
 }else{
