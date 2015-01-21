@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+	
+	<title>Création de pages synchronisées sur des vidéos</title>
+	<!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+	
+	<script src="build/jquery-1.11.1.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<script type='text/javascript'>
+		$(document).ready(function(){
+	  $.ajax({
+		url: "utils/repertoire.php",
+		dataType:'JSON',
+		type:"POST",
+		data:{repertoire:""},
+		success:function(data){	
+		var username =getCookie('username');
+		 var webPath=getWebPath();
+		 webPath=webPath+"view.html?username="+username+"&realname=";
+		 $(data).each(function(){
+			var html="<tr><td>"+this+"</td><td>"+webPath+this+"</td></tr>";
+			$("#table").append(html);
+		 })
+		}
+	});
+	});
+	
+	function getWebPath(){
+        var str = location.href;
+		var arr = str.split("/");
+		delete arr[arr.length-1];
+		var dir = arr.join("/");
+		return dir;
+    }
+
+	function checkCookie(){
+	var user=getCookie("username");
+    if (user == "") {
+		window.location.href='index.html';
+	 }
+	}
+	function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+	</script>
+	<style>
+	body { 
+    width: 70%; margin: 40px auto 5px; background: #91c7ff; 
+    padding: 8px;
+    background: #ECECEC;
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+	}
+	</style>
+</head>
+
+<body onload="checkCookie()">
+ <div class="container">
+	<div class="row">
+	  <h2>Pages créées</h2>
+	  <br>
+	  <div>
+		<table class="table" id="table">
+		<tr>
+			<th>Nom de video</th>
+			<th>lien de video</th>
+		<tr>
+		</table>
+	  </div>
+	</div>
+</div>
+</div>	
+
+</body>
+
+</html>

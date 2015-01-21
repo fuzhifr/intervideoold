@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cacophony Demo</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="chrome=1" />
+<script type="text/javascript" src="build/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="build/jquery-ui-1.8.6.custom.min.js"></script>
+<script type="text/javascript" src="build/cacophony.min.js"></script>
+<script type="text/javascript" src="js/settings.js"></script>
+<script type="text/javascript" src="js/loadJS.js"></script>
+<script id="storyJS" type="text/javascript" src=""></script>
+<link rel="stylesheet" type="text/css" href="build/cacophony.min.css" />
+</head>
+<body>
+<script type="text/javascript">
+function GetRequest() {
+   var url = location.search; //获取url中"?"符后的字串
+   var theRequest = new Object();
+   if (url.indexOf("?") != -1) {
+	  var str = url.substr(1);
+	  strs = str.split("&");
+	  for(var i = 0; i < strs.length; i ++) {
+		 theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+	  }
+   }
+   return theRequest;
+}
+
+	var Request = new Object();
+	Request = GetRequest();
+	var realname=Request['realname'];
+	var username=Request['username'];
+	var storyFile='server/php/StoryFile/'+username+'/'+realname+'.js';
+	
+
+$(document).ready (function () {
+    // chaque fois, on regarde le fichier buttoninfo pour créer les buttons automatiquement
+	var urlJSON='server/php/StoryFile/'+username+'/Info_'+realname+'.json';
+	$.getJSON(urlJSON,function(data){
+		var len=data.button.rows.length;
+		var nChapitre=0;
+		if(len!=0){
+			var buttonHtml="<h3>Chapitre</h3>";
+			for(var i=0;i<len;i++){
+				if(!data.button.rows[i].hasOwnProperty("time")){
+					nChapitre+=1;
+					buttonHtml+="<a href='#' onclick='jumpTo("+data.button.rows[i].jumpTo+")'>Chapitre "+nChapitre+"</a><p>"
+					buttonHtml+="Introduction："+data.button.rows[i].label+" <p>";
+				}
+			}
+			 if(nChapitre!=0){
+				$("#buttonList").html(buttonHtml);
+			}
+		}
+	});
+	// Specify the video files. Multiple files are required to be compatible
+	// with the different browsers at this time.
+	loadJS('storyJS',storyFile);
+	cacophony.setVideo (
+		'server/php/files/'+username+'/'+realname+'.mp4',
+		'server/php/files/'+username+'/'+realname+'.webm',
+		'server/php/files/'+username+'/'+realname+'.ogv'
+	);
+
+	cacophony.init ();
+	cacophony.play();
+
+    
+});
+
+ function ajouteButton(){
+ 	var urlJSON='server/php/StoryFile/'+username+'/Info_'+realname+'.json';
+     $.getJSON(urlJSON,function(data){
+		var len=data.button.rows.length;
+		if(len!=0){
+			var buttonHtml="<h3>Button</h3>";
+			var nButton=0;
+			for(var i=0;i<len;i++){
+				if(data.button.rows[i].hasOwnProperty("time")){
+					if(timeRegarde>data.button.rows[i].time-2){
+						nButton+=1;
+						buttonHtml+="<button onclick='jumpTo("+data.button.rows[i].jumpTo+")'>"
+						buttonHtml+=data.button.rows[i].label+"</button> <p>";
+					}
+				}
+			}
+			if(nButton!=0){
+				$("#buttonList2").html(buttonHtml);
+			}
+		}
+	});
+	setTimeout("ajouteButton()",500);
+}
+
+var timeRegarde=0;
+ajouteButton();
+majTimeRegarde();
+
+function majTimeRegarde(){
+	if(timeRegarde<cacophony.beat){
+	  timeRegarde=cacophony.beat;
+	}
+	setTimeout("majTimeRegarde()",100);
+}
+function jumpTo(time){
+		cacophony.jumpToTime(time);
+}
+
+</script>
+
+<style type="text/css">
+
+.content{
+    margin:0 auto;
+	overflow:hidden;
+}
+.leftDiv {
+	float:left; 
+	margin-left:10%;
+}
+.rightDiv{
+	float:left; 
+	margin-left:30px;
+	margin-top:5%;
+	width:20%;
+} 
+</style>
+<div class="content">	
+	<div class="leftDiv">
+	<div id="cacophony" ></div>
+	</div>
+	<div  class="rightDiv">
+		<div id="buttonList">
+		</div>
+		<div id="buttonList2">
+		</div>
+	</div>	
+</div>
+</body>
+</html>
