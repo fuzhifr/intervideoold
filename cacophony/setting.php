@@ -1,3 +1,8 @@
+<?php
+	require_once((dirname(dirname(dirname(dirname(__FILE__))))).'/config.php');
+	Global $USER;
+	$username=$USER->username;
+?>
 <!DOCTYPE html>
 <html > 
 <head> 
@@ -18,7 +23,7 @@
 	Request = GetRequest();
 	var filename=Request['filename'];
 	var realname=filename.substring(0,filename.lastIndexOf("."));	
-	
+	var username="<?php echo $username; ?>";
 $(document).ready(function(){
 
 	//si le video deja settings. charger les infos
@@ -54,27 +59,13 @@ $(document).ready(function(){
 		}
 	  }
 	});
-	var username=getCookie("username");
-	var sourceMp4="server/php/files/"+username+"/"+realname+".mp4";
-	var sourceWebm="server/php/files/"+username+"/"+realname+".webm";
-	var sourceOgv="server/php/files/"+username+"/"+realname+".ogv";
+	var sourceMp4="server/php/files/<?php echo $username; ?>/"+realname+".mp4";
+	var sourceWebm="server/php/files/<?php echo $username; ?>/"+realname+".webm";
+	var sourceOgv="server/php/files/<?php echo $username; ?>/"+realname+".ogv";
 	$("#sourceMp4").attr('src',sourceMp4);
 	$("#sourceWebm").attr('src',sourceWebm);
 	$("#sourceOgv").attr('src',sourceOgv);
 });
-
-function getCookie(cname) {
-	var name = cname + "=";
-	var ca = document.cookie.split(';');
-	for(var i=0; i<ca.length; i++) {
-		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1);
-		if (c.indexOf(name) == 0) {
-			return c.substring(name.length, c.length);
-		}
-	}
-	return "";
-}
 
 function addUnLigne(){
 var checkValue=$("#select_option").val();

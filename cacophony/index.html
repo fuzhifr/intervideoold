@@ -14,32 +14,6 @@
 	<script src="build/jquery-1.11.1.min.js"></script>
     <script type='text/javascript' src='js/jquery.ba-hashchange.min.js'></script>
     <script type='text/javascript' src='js/dynamicpage.js'></script>
-	<script type='text/javascript'>
-	$(document).ready(function(){
-		var Request = new Object();
-		Request = GetRequest();
-		var username=Request['username'];
-		setCookie("username",username,2);
-	});
-	function setCookie(cname, cvalue, exhours) {
-		var d = new Date();
-		d.setTime(d.getTime() + (exhours*60*60*1000));
-		var expires = "expires="+d.toUTCString();
-		document.cookie = cname + "=" + cvalue + "; " + expires;
-	}
-	function GetRequest() {
-	   var url = location.search; //get les lettres apres "?"
-	   var theRequest = new Object();
-	   if (url.indexOf("?") != -1) {
-		  var str = url.substr(1);
-		  strs = str.split("&");
-		  for(var i = 0; i < strs.length; i ++) {
-			 theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
-		  }
-	   }
-	   return theRequest;
-	}
-	</script>
 </head>
 
 <body>

@@ -3,8 +3,11 @@
 // Note: This is a demo only. Don't store emails
 // in a text file like this on a real site!
 
+require_once(dirname(dirname(dirname(dirname(dirname(__FILE__))))).'/config.php');
+Global $USER;
+$username=$USER->username; 
 $realname=$_POST["realname"];
-$username=$_COOKIE['username'];
+
 $filename='../server/php/StoryFile/'.$username.'/'.$realname.'.js';
 $fileDir='../server/php/StoryFile/'.$username;
 if(!file_exists($fileDir)){
@@ -32,7 +35,7 @@ writeInputText($data->inputText,$fp);
 writeQCM($data->qcm,$fp);
 
 fclose ($fp);
-
+echo json_encode($username);
 function writeText($text,$fp){
 	$textRows=$text->rows;
 
@@ -87,4 +90,6 @@ $qcmRows=$qcm->rows;
 		fwrite ($fp,$write);
 	}
 }
+
+
 ?>

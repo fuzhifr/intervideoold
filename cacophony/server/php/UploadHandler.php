@@ -9,10 +9,11 @@
  * Licensed under the MIT license:
  * http://www.opensource.org/licenses/MIT
  */
+require_once('../../../../../config.php');
 
 class UploadHandler
 {
-
+	
     protected $options;
 
     // PHP File Upload error message codes:
@@ -198,7 +199,8 @@ class UploadHandler
     }
 
     protected function get_user_name() {
-        return $_COOKIE['username'];
+		Global $USER;
+        return $USER->username;
     }
 
     protected function get_user_path() {

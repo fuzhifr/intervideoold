@@ -91,8 +91,7 @@ function submitForm(){
 	data.inputText=inputTextData;
 	data.text=textData;
 	dataJson=JSON.stringify(data);
-	console.log(data);
-	var username=getCookie('username');
+
 	// envoyer tous les datas a  settings.php
 	$.ajax({
 		url: "utils/settings.php",
@@ -100,7 +99,6 @@ function submitForm(){
 		type:"POST",
 		data:{data:dataJson,realname:realname},
 		success:function(data){	
-		console.log(data);
 		window.open("view.html?username="+username+"&realname="+realname,'_blank');
 		}
 	});
@@ -108,18 +106,6 @@ function submitForm(){
 	return false;
 }
 
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0; i<ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1);
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
 
 function getText(){
 	var textData={};

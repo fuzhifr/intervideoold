@@ -1,1 +1,0 @@
-{"qcm":{"rows":[{"id":"Q1","time":"5","msg":"qcm1","options":[{"option":"option1","jumpTo":"53"}]}]},"button":{"rows":[{"id":"1","time":"2","label":"lable1","jumpTo":"7"},{"id":"2","time":"9","label":"label2","jumpTo":"3"},{"id":"1","label":"chapitre1","jumpTo":"5"},{"id":"2","label":"chapitre222","jumpTo":"5"}]},"inputText":{"rows":[]},"text":{"rows":[]}}
