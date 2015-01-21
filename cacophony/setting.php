@@ -65,6 +65,11 @@ $(document).ready(function(){
 	$("#sourceMp4").attr('src',sourceMp4);
 	$("#sourceWebm").attr('src',sourceWebm);
 	$("#sourceOgv").attr('src',sourceOgv);
+	
+	$("#myVideo").mousemove(function(e){
+	var Y = e.pageY-$('#myVideo').offset().top; 
+	var X = e.pageX-$('#myVideo').offset().left; 
+    $("span").text(" x : "+X+", y : " + Y);
 });
 
 function addUnLigne(){
@@ -187,6 +192,9 @@ function submitButton(type){
 		<track kind="subtitles" src="css/demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
 		<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 	  </video>
+	</div>
+	<div>
+	<p><span></span>.</p>
 	</div>
  </div>
 </div>

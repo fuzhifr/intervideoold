@@ -16,13 +16,17 @@ function GetRequest() {
 function textfunction(){
  var myVid=document.getElementById("myVideo_html5_api");
  var time=Math.round(myVid.currentTime);
- $("#tableInput").html("<tr><th>time</th><th>message</th></tr>")
+ $("#tableInput").html("<tr><th>begin</th><th>end</th><th>text</th><th>x</th><th>y</th></tr>")
  $("#tableInput").append("<tr align='center'>"
-                                +"<td><input class='form-control' min=1 type='number' name='timeText' id='timeText' size='5' value='"+time+"' required></td>"
-								+"<td><input class='form-control' type='text' name='msgText' id='msgText' required></td>"	
+								+"<td><input class='form-control' min=1 type='number' name='begin' id='begin'  value='"+time+"' required></td>"
+                                +"<td><input class='form-control' min=1 type='number' name='end' id='end'  required></td>"
+								+"<td><input class='form-control' type='text' name='msgText' id='msgText' size=50 required></td>"
+								+"<td><input class='form-control' min=0 type='number' name='xText' id='xText'  required></td>"		
+								+"<td><input class='form-control' min=0 type='number' name='yText' id='yText'  required></td>"
 						+"</tr>");  
  $("#submitButton").html("<button class='btn' onclick=\"submitButton('text');\">Submit</button>");
 }
+
 
 //creer une champ pour entrer les infos de Chapitre
 function chapitrefunction(){
@@ -114,7 +118,7 @@ function getText(){
 	var textTable=$("tr.text");
 	$(textTable).each(function(){
 		var i=$(this).attr("id");
-		rows.push({"id":i,"time":$("input[id='timeText"+i+"']").val(),"msg":$("input[id='msgText"+i+"']").val()});
+		rows.push({"id":i,"begin":$("input[id='beginText"+i+"']").val(),"end":$("input[id='endText"+i+"']").val(),"msg":$("input[id='msgText"+i+"']").val(),"x":$("input[id='xText"+i+"']").val(),"y":$("input[id='yText"+i+"']").val()});
 	});
 	textData.rows=rows;
 	return textData;
@@ -197,25 +201,38 @@ function AddText(row){
 		$("#titreText").html("<h3>Text</h3>");
 		$("#textTable").html("<tr>"
 								+"<th>*</th>"
-								+"<th>time</th>"
+								+"<th>begin</th>"
+								+"<th>end</th>"
 								+"<th>message</th>"
+								+"<th>X</th>"
+								+"<th>Y</th>"
 							+"</tr>");
 		$("#btnText").html("<input name='' class='btn' type='button' value='delete text' onClick='deleteText()' />");
 	} 
 	nText+=1;
 	if(row==""){
-		var timeValue=$("input[id='timeText']").val();
+		var timeValue=$("input[id='begin']").val();
+		var endValue=$("input[id='end']").val();
 		var msgText=$("input[id='msgText']").val();
+		var x=$("input[id='xText']").val();
+		var y=$("input[id='yText']").val();
 	}else{
-		var timeValue=row.time;
+		var timeValue=row.begin;
+		var endValue=row.end;
 		var msgText=row.msg;
+		var x=row.x;
+		var y=row.y;
 	}
 	  $("#textTable").append("<tr id="+nText+" class='text' align='center'>"
 									+"<td><input type='checkbox' name='text'/></td>"
-									+"<td><input class='form-control' min=1 type='number' name='timeText"+nText+"' id='timeText"+nText+"' size='5' value='"+timeValue+"' required></td>"
-									+"<td><input class='form-control' type='text' name='msgText"+nText+"' id='msgText"+nText+"' value='"+msgText+"' required></td>"	
+									+"<td><input class='form-control' min=1 type='number' name='beginText"+nText+"' id='beginText"+nText+"'  value='"+timeValue+"' required></td>"
+									+"<td><input class='form-control' min=1 type='number' name='endText"+nText+"' id='endText"+nText+"'  value='"+endValue+"' required></td>"
+									+"<td><input class='form-control' type='text' name='msgText"+nText+"' id='msgText"+nText+"' size=50 value='"+msgText+"' required></td>"	
+									+"<td><input class='form-control' type='text' name='xText"+nText+"' id='xText"+nText+"'  value='"+x+"' required></td>"
+									+"<td><input class='form-control' type='text' name='yText"+nText+"' id='yText"+nText+"'  value='"+y+"' required></td>"									
 							+"</tr>"); 		
 }
+
 
 //delete un text 
 function deleteText(){ 

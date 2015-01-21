@@ -36,13 +36,13 @@ writeQCM($data->qcm,$fp);
 
 fclose ($fp);
 echo json_encode($username);
+
 function writeText($text,$fp){
 	$textRows=$text->rows;
-
 	foreach($textRows as $row){
-	 $write="_s[".$row->time."]=[{a:'lyrics', d:{txt:\"";
-	 $write.=$row->msg."\",x: 100, y: 100,
-	 colour:'rgba(0, 0, 0, 1)' }}];\n";
+	 $write="_s[".$row->begin."]=[{a:'html', d:{html:\"<h2>";
+	 $write.=$row->msg."</h2>\",top:".$row->y.", left:".$row->x." }}];\n";
+	 $write.="_s[".$row->end."]=[{a:'clear_html'}];\n";
 	 fwrite ($fp,$write);
 	}
 }
