@@ -22,13 +22,23 @@
 		 var webPath=getWebPath();
 		 webPath=webPath+"view.html?username="+username+"&realname=";
 		 $(data.fileList).each(function(){
-			var html="<tr><td>"+this+"</td><td>"+webPath+this+"</td></tr>";
+			var html="<tr><td>"+this+"</td>"
+					+"<td>"+webPath+this+"</td>"
+					+"<td> <button class='btn' onclick=\"downloadFile('"+this+"')\">Download</button></td></tr>";
 			$("#table").append(html);
 		 })
 		}
 	});
 	});
-	
+	function downloadFile(realname){
+		$.get("utils/downfile.php?realname="+realname+"&username="+username,function(data,status){
+			if(data=="false"){	
+			   alert("il n'exites pas le fichier");
+			}else{
+				window.location="utils/downfile.php?realname="+realname+"&username="+username;
+			}	
+		});
+	}
 	function getWebPath(){
         var str = location.href;
 		var arr = str.split("/");
@@ -59,6 +69,7 @@
 		<tr>
 			<th>Nom de video</th>
 			<th>lien de video</th>
+			<th>download Resultat inputText</th>
 		<tr>
 		</table>
 	  </div>
