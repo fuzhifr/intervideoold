@@ -195,8 +195,10 @@ var nJump=0;
 //nombreo chapitre
 var nChapitre=0;
 
-//ajouter un text
+//ajouter un ligne de text dans le table de text
 function AddText(row){
+
+	//si c'est la premiere ligne, affiche le titre 
 	if(nText==0){
 		$("#titreText").html("<h3>Text</h3>");
 		$("#textTable").html("<tr>"
@@ -210,6 +212,8 @@ function AddText(row){
 		$("#btnText").html("<input name='' class='btn' type='button' value='delete text' onClick='deleteText()' />");
 	} 
 	nText+=1;
+	
+	//abtenir les valeurs 
 	if(row==""){
 		var timeValue=$("input[id='begin']").val();
 		var endValue=$("input[id='end']").val();
@@ -228,13 +232,13 @@ function AddText(row){
 									+"<td><input class='form-control' min=1 type='number' name='beginText"+nText+"' id='beginText"+nText+"'  value='"+timeValue+"' required></td>"
 									+"<td><input class='form-control' min=1 type='number' name='endText"+nText+"' id='endText"+nText+"'  value='"+endValue+"' required></td>"
 									+"<td><input class='form-control' type='text' name='msgText"+nText+"' id='msgText"+nText+"' size=50 value='"+msgText+"' required></td>"	
-									+"<td><input class='form-control' type='text' name='xText"+nText+"' id='xText"+nText+"'  value='"+x+"' required></td>"
-									+"<td><input class='form-control' type='text' name='yText"+nText+"' id='yText"+nText+"'  value='"+y+"' required></td>"									
+									+"<td><input class='form-control' min=0 type='number' name='xText"+nText+"' id='xText"+nText+"'  value='"+x+"' required></td>"
+									+"<td><input class='form-control' min=0 type='number' name='yText"+nText+"' id='yText"+nText+"'  value='"+y+"' required></td>"									
 							+"</tr>"); 		
 }
 
 
-//delete un text 
+//delete une ligne de text 
 function deleteText(){ 
 	var checked = $("input[type='checkbox'][name='text']"); 
 	var len=checked.length;
@@ -243,6 +247,7 @@ function deleteText(){
 		{ 
 			$(this).parent().parent().remove(); 
 			len=len-1;
+			//si il n'y a aucune ligne, supprime le titre
 			if(len==0){
 				$("#titreText").html("");
 				$("#textTable").html("");

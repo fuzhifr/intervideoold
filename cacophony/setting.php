@@ -70,6 +70,7 @@ $(document).ready(function(){
 	var Y = e.pageY-$('#myVideo').offset().top; 
 	var X = e.pageX-$('#myVideo').offset().left; 
     $("span").text(" x : "+X+", y : " + Y);
+	});
 });
 
 function addUnLigne(){
