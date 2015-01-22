@@ -24,14 +24,15 @@
 		 $(data.fileList).each(function(){
 			var html="<tr><td>"+this+"</td>"
 					+"<td>"+webPath+this+"</td>"
-					+"<td> <button class='btn' onclick=\"downloadFile('"+this+"')\">Download</button></td></tr>";
+					+"<td> <button class='btn' onclick=\"downloadFile('"+this+"','"+data.username+"')\">Download</button></td></tr>";
 			$("#table").append(html);
 		 })
 		}
 	});
 	});
-	function downloadFile(realname){
+	function downloadFile(realname,username){
 		$.get("utils/downfile.php?realname="+realname+"&username="+username,function(data,status){
+			
 			if(data=="false"){	
 			   alert("il n'exites pas le fichier");
 			}else{
