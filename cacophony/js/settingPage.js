@@ -45,7 +45,7 @@ function chapitrefunction(){
 function inputTextfunction(){
  var myVid=document.getElementById("myVideo_html5_api");
  var time=Math.round(myVid.currentTime);
- $("#tableInput").html("<tr><th>time</th><th>jump to</th><th>titre du question</th></tr>")
+ $("#tableInput").html("<tr><th>time</th><th>titre du question</th></tr>")
  $("#tableInput").append("<tr align='center'>"
                                 +"<td><input class='form-control' min=1 type='number' name='timeInput' id='timeInput' size='5' value='"+time+"'/></td>"
 								+"<td><input class='form-control' type='text' name='msgInput' id='msgInput' size=60 /></td>"	

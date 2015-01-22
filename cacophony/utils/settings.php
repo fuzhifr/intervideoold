@@ -55,7 +55,7 @@ function writeInputText($inputText,$fp,$username,$realname){
 	 $write="_s[".$row->time."]=[{a:'input_text', d:{msg:\"";
 	 $write.=$row->msg;
 	 $write.="\",thanks:\"Thanks for your input\",
-		save_to: 'utils/save_input.php?questionName=".$row->msg."&username=".$username."&filename=".$realname."'}},{a:'pause'}]; \n";
+		save_to: 'utils/save_input.php?questionName=".$row->msg."&username=".$username."&realname=".$realname."'}},{a:'pause'}]; \n";
 	 fwrite ($fp,$write);
 	}
 }
