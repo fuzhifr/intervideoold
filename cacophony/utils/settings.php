@@ -30,7 +30,7 @@ fwrite ($fp, "\n");
 $data=json_decode($data);
 writeText($data->text,$fp);
 
-writeInputText($data->inputText,$fp);
+writeInputText($data->inputText,$fp,$username,$realname);
 
 writeQCM($data->qcm,$fp);
 
@@ -47,7 +47,7 @@ function writeText($text,$fp){
 	}
 }
 
-function writeInputText($inputText,$fp){
+function writeInputText($inputText,$fp,$username,$realname){
 	
 	$inputTextRows=$inputText->rows;
 
@@ -55,9 +55,7 @@ function writeInputText($inputText,$fp){
 	 $write="_s[".$row->time."]=[{a:'input_text', d:{msg:\"";
 	 $write.=$row->msg;
 	 $write.="\",thanks:\"Thanks for your input\",
-		save_to: 'save_input.php?filename=".$realname."',jump_to:";
-	 $write.=$row->jumpTo."}},
-		{a:'pause'}]; \n";
+		save_to: 'utils/save_input.php?questionName=".$row->msg."&username=".$username."&filename=".$realname."'}},{a:'pause'}]; \n";
 	 fwrite ($fp,$write);
 	}
 }

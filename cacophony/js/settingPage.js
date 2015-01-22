@@ -45,11 +45,10 @@ function chapitrefunction(){
 function inputTextfunction(){
  var myVid=document.getElementById("myVideo_html5_api");
  var time=Math.round(myVid.currentTime);
- $("#tableInput").html("<tr><th>time</th><th>jump to</th><th>message</th></tr>")
+ $("#tableInput").html("<tr><th>time</th><th>jump to</th><th>titre du question</th></tr>")
  $("#tableInput").append("<tr align='center'>"
                                 +"<td><input class='form-control' min=1 type='number' name='timeInput' id='timeInput' size='5' value='"+time+"'/></td>"
-								+"<td><input class='form-control' min=1 type='number' name='jumpToInput' id='jumpToInput' size='5' /></td>"
-								+"<td><input class='form-control' type='text' name='msgInput' id='msgInput' /></td>"	
+								+"<td><input class='form-control' type='text' name='msgInput' id='msgInput' size=60 /></td>"	
 						+"</tr>");  
  $("#submitButton").html("<button class='btn' onclick=\"submitButton('inputText');\">Submit</button>");
 }
@@ -174,7 +173,7 @@ function getInputText(){
 	var inputTable=$("tr.inputText");
 	$(inputTable).each(function(){
 		var i=$(this).attr("id");
-		rows.push({"id":i,"time":$("input[id='time"+i+"']").val(),"msg":$("input[id='msg"+i+"']").val(),"jumpTo":$("input[id='jumpTo"+i+"']").val()});
+		rows.push({"id":i,"time":$("input[id='time"+i+"']").val(),"msg":$("input[id='msg"+i+"']").val()});
 	});
 	inputTextData.rows=rows;
 	return inputTextData;
@@ -309,26 +308,22 @@ function AddInputText(row){
 			$("#inputTable").html("<tr>"
 									+"<th>*</th>"
 									+"<th>time</th>"
-									+"<th>jump to</th>"
-									+"<th>message</th>"
+									+"<th>titre du question</th>"
 								+"</tr>");
 			$("#btnInputText").html("<input class='btn' type='button' value='delete InputText' onClick='deleteInputText()' />");
 	} 
 	nInputText+=1;
 	if(row==""){
 		var timeValue=$("input[id='timeInput']").val();
-		var jumpToValue=$("input[id='jumpToInput']").val();
 		var msgValue=$("input[id='msgInput']").val();
 	}else{
 		var timeValue=row.time;
-		var jumpToValue=row.jumpTo;
 		var msgValue=row.msg;
 	}
   $("#inputTable").append("<tr id="+nInputText+" class='inputText' align='center'>"
                                 +"<td><input type='checkbox' name='inputText'/></td>"
                                 +"<td><input class='form-control' min=1 type='number' name='time"+nInputText+"' id='time"+nInputText+"' value='"+timeValue+"' size='5' required></td>"
-								+"<td><input class='form-control' min=1 type='number' name='jumpTo"+nInputText+"' id='jumpTo"+nInputText+"' value='"+jumpToValue+"' size='5' required></td>"
-								+"<td><input class='form-control' type='text' name='msg"+nInputText+"' id='msg"+nInputText+"' value='"+msgValue+"' required></td>"							
+								+"<td><input class='form-control' size=60 type='text' name='msg"+nInputText+"' id='msg"+nInputText+"' value='"+msgValue+"' required></td>"							
 						+"</tr>");     
 } 
 
