@@ -79,7 +79,7 @@ if(has_capability('mod/intervideoold:view',$context)&&has_capability('mod/interv
 				<p>Your browser does not support iframes.</p>
 			</iframe>";
 }else{
-	echo "Désole ".$username.", vous n'avez pas les capabilités";
+	echo "Désolé ".$username.", vous n'avez pas accès à cette activité";
 }
 // Finish the page
 echo $OUTPUT->footer();

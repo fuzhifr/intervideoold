@@ -17,10 +17,8 @@
 
 
 /**
- * English strings for intervideoold
+ * Chaines de caracteres en français pour ce module
  *
- * You can have a rather longer description of the file as well,
- * if you like, and it can span multiple lines.
  *
  * @package    mod
  * @subpackage intervideoold
@@ -32,10 +30,10 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['modulename'] = 'intervideoold';
 $string['modulenameplural'] = 'intervideoolds';
-$string['modulename_help'] = 'Use the intervideoold module for creating web pages with interactive videos.';
-$string['intervideooldfieldset'] = 'Module fieldset';
-$string['intervideooldname'] = 'Instance name';
-$string['intervideooldname_help'] = 'This is the content of the help tooltip associated with the intervideooldname field. Markdown syntax is supported.';
-$string['intervideoold'] = 'Interactive video';
-$string['pluginadministration'] = 'intervideoold administration';
+$string['modulename_help'] = 'Ce module permet de créer des pages web avec des vidéos interactives. Il sera possible, avec l\URL de ces pages, de les importer en tant que ressources via le module URL par exemple.';
+$string['intervideooldfieldset'] = 'Champ spécifique au module';
+$string['intervideooldname'] = 'Nom de l\'instance du module';
+$string['intervideooldname_help'] = 'Veuillez consulter le descriptif de l\activité ou la page d\accueil de l\instance pour obtenir des informations';
+$string['intervideoold'] = 'Outil de création de vidéos interactives';
+$string['pluginadministration'] = 'Administration de intervideoold';
 $string['pluginname'] = 'intervideoold';

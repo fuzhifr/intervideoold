@@ -64,10 +64,10 @@ class mod_intervideoold_mod_form extends moodleform_mod {
         //-------------------------------------------------------------------------------
         // Adding the rest of intervideoold settings, spreeading all them into this fieldset
         // or adding more fieldsets ('header' elements) if needed for better logic
-        $mform->addElement('static', 'label1', 'intervideooldsetting1', 'Your intervideoold fields go here. Replace me!');
+        //$mform->addElement('static', 'label1', 'intervideooldsetting1', 'Your intervideoold fields go here. Replace me!');
 
-        $mform->addElement('header', 'intervideooldfieldset', get_string('intervideooldfieldset', 'intervideoold'));
-        $mform->addElement('static', 'label2', 'intervideooldsetting2', 'Your intervideoold fields go here. Replace me!');
+        //$mform->addElement('header', 'intervideooldfieldset', get_string('intervideooldfieldset', 'intervideoold'));
+        //$mform->addElement('static', 'label2', 'intervideooldsetting2', 'Your intervideoold fields go here. Replace me!');
 
         //-------------------------------------------------------------------------------
         // add standard elements, common to all modules
