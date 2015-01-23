@@ -30,10 +30,10 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['modulename'] = 'intervideoold';
 $string['modulenameplural'] = 'intervideoolds';
-$string['modulename_help'] = 'Ce module permet de créer des pages web avec des vidéos interactives. Il sera possible, avec l\URL de ces pages, de les importer en tant que ressources via le module URL par exemple.';
+$string['modulename_help'] = 'Ce module permet de créer des pages web avec des vidéos interactives. Il sera possible, avec l\'URL de ces pages, de les importer en tant que ressources via le module URL par exemple.';
 $string['intervideooldfieldset'] = 'Champ spécifique au module';
 $string['intervideooldname'] = 'Nom de l\'instance du module';
-$string['intervideooldname_help'] = 'Veuillez consulter le descriptif de l\activité ou la page d\accueil de l\instance pour obtenir des informations';
+$string['intervideooldname_help'] = 'C\'est le nom de cette activité. Attention, il ne peut y avoir qu\'une seule activité intervideoold.';
 $string['intervideoold'] = 'Outil de création de vidéos interactives';
 $string['pluginadministration'] = 'Administration de intervideoold';
 $string['pluginname'] = 'intervideoold';

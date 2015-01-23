@@ -23,7 +23,7 @@
 	Request = GetRequest();
 	var filename=Request['filename'];
 	var realname=filename.substring(0,filename.lastIndexOf("."));	
-	
+	var username="<?php echo $username; ?>";
 $(document).ready(function(){
 
 	//si le video deja settings. charger les infos
@@ -55,37 +55,17 @@ $(document).ready(function(){
 			for(var i=0;i<text.rows.length;i++){
 					AddText(text.rows[i]);
 			}
-			$("#inputDiv").html("<button class='btn' type='submit'>Enregistrer</button>");
+			$("#inputDiv").html("<button class='btn' type='submit'>Submit</button>");
 		}
 	  }
 	});
-	var username=getCookie("username");
-	var sourceMp4="server/php/files/"+username+"/"+realname+".mp4";
-	var sourceWebm="server/php/files/"+username+"/"+realname+".webm";
-	var sourceOgv="server/php/files/"+username+"/"+realname+".ogv";
+	var sourceMp4="server/php/files/<?php echo $username; ?>/"+realname+".mp4";
+	var sourceWebm="server/php/files/<?php echo $username; ?>/"+realname+".webm";
+	var sourceOgv="server/php/files/<?php echo $username; ?>/"+realname+".ogv";
 	$("#sourceMp4").attr('src',sourceMp4);
 	$("#sourceWebm").attr('src',sourceWebm);
 	$("#sourceOgv").attr('src',sourceOgv);
-	
-	$("#myVideo").mousemove(function(e){
-	var Y = e.pageY-$('#myVideo').offset().top; 
-	var X = e.pageX-$('#myVideo').offset().left; 
-    $("span").text(" x : "+X+", y : " + Y);
-  });
 });
-
-function getCookie(cname) {
-	var name = cname + "=";
-	var ca = document.cookie.split(';');
-	for(var i=0; i<ca.length; i++) {
-		var c = ca[i];
-		while (c.charAt(0)==' ') c = c.substring(1);
-		if (c.indexOf(name) == 0) {
-			return c.substring(name.length, c.length);
-		}
-	}
-	return "";
-}
 
 function addUnLigne(){
 var checkValue=$("#select_option").val();
@@ -104,7 +84,7 @@ var checkValue=$("#select_option").val();
 
 //submit le table pour creer une activite
 function submitButton(type){
-	$("#inputDiv").html("<button class='btn' type='submit'>Enregistrer</button>");
+	$("#inputDiv").html("<button class='btn' type='submit'>Submit</button>");
 	if(type=="text"){
 		AddText("");
 	}else if(type=="chapitre"){
@@ -133,14 +113,14 @@ function submitButton(type){
 <div class="row">
 	<div class="col-md-6">
 		<div class="col-sm-2">
-			<button onclick="addUnLigne()" class="btn">Ajouter</button>
+			<button onclick="addUnLigne()" class="btn">add</button>
 		</div>
 		<div class="col-sm-4">
 			<select id="select_option" class="form-control">
-			  <option value ="text">Texte</option>
+			  <option value ="text">Text</option>
 			  <option value ="chapitre">Chapitre</option>
-			  <option value="inputText">Saisie de texte</option>
-			  <option value="jump">Aller à</option>
+			  <option value="inputText">Input Text</option>
+			  <option value="jump">Jump to Button</option>
 			  <option value="qcm">QCM</option>
 			</select>
 		</div>
@@ -207,9 +187,6 @@ function submitButton(type){
 		<track kind="subtitles" src="css/demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
 		<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
 	  </video>
-	</div>
-	<div>
-	<p><span></span>.</p>
 	</div>
  </div>
 </div>
