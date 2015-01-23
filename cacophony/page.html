@@ -24,7 +24,7 @@
 		 $(data.fileList).each(function(){
 			var html="<tr><td>"+this+"</td>"
 					+"<td>"+webPath+this+"</td>"
-					+"<td> <button class='btn' onclick=\"downloadFile('"+this+"','"+data.username+"')\">Download</button></td></tr>";
+					+"<td> <button class='btn' onclick=\"downloadFile('"+this+"','"+data.username+"')\">Télécharger</button></td></tr>";
 			$("#table").append(html);
 		 })
 		}
@@ -68,9 +68,9 @@
 	  <div>
 		<table class="table" id="table">
 		<tr>
-			<th>Nom de video</th>
-			<th>lien de video</th>
-			<th>download Resultat inputText</th>
+			<th>Nom de la vidéo</th>
+			<th>Lien vers la vidéo</th>
+			<th>Saisies de texte (csv)</th>
 		<tr>
 		</table>
 	  </div>
