@@ -22,9 +22,13 @@
 		 var webPath=getWebPath();
 		 webPath=webPath+"view.html?username="+username+"&realname=";
 		 $(data.fileList).each(function(){
-			var html="<tr><td>"+this+"</td>"
-					+"<td>"+webPath+this+"</td>"
-					+"<td> <button class='btn' onclick=\"downloadFile('"+this+"','"+data.username+"')\">Télécharger</button></td></tr>";
+			var html="<tr><td>"+this.realname+"</td>"
+					+"<td>"+webPath+this.realname+"</td>";
+					if(this.isExist=="true"){
+						html+="<td> <button class='btn' onclick=\"downloadFile('"+this.realname+"','"+data.username+"')\">Télécharger</button></td></tr>";
+					}else{
+						html+="<td></td>";
+					}
 			$("#table").append(html);
 		 })
 		}

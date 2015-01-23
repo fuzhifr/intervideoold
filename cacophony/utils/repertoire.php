@@ -10,7 +10,13 @@
 		if($file != "." && $file != ".."){
 		 $filename=pathinfo($file);
 			if($filename['extension']=="js"){
-				array_push($fileList, basename($file,'.js'));
+				$realname=basename($file,'.js');
+				$isExist=isExistFile($realname,$username);
+				$resultat=array(
+					"isExist"=>$isExist,
+					"realname"=>$realname
+				);
+				array_push($fileList,$resultat);
 			}
 		 }
 		}
@@ -22,5 +28,21 @@
 		echo json_encode($resultat);
 	}else{
 		mkdir($current_dir);
+	}
+	
+	function isExistFile($realname,$username){
+			$dir = "../server/php/inputTextResultat/".$username."/".$realname."/";
+			if (is_dir($dir)){
+			  if ($dh = opendir($dir)){
+				while (($file = readdir($dh)) !== false){
+				if($file != "." && $file != ".."){					  
+					 return "true";
+				  }
+				}
+				return "false";
+			  }
+			}else{
+				return "false";
+			}
 	}
 ?>
