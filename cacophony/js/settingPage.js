@@ -21,8 +21,8 @@ function textfunction(){
 								+"<td><input class='form-control' min=1 type='number' name='begin' id='begin'  value='"+time+"' required></td>"
                                 +"<td><input class='form-control' min=1 type='number' name='end' id='end'  required></td>"
 								+"<td><input class='form-control' type='text' name='msgText' id='msgText' size=50 required></td>"
-								+"<td><input class='form-control' min=0 type='number' name='xText' id='xText'  required></td>"		
-								+"<td><input class='form-control' min=0 type='number' name='yText' id='yText'  required></td>"
+								+"<td><input class='form-control' min=0 type='number' name='xText' id='xText' value=300 required></td>"		
+								+"<td><input class='form-control' min=0 type='number' name='yText' id='yText' value=200 required></td>"
 						+"</tr>");  
  $("#submitButton").html("<button class='btn' onclick=\"submitButton('text');\">Enregistrer</button>");
 }
@@ -44,12 +44,12 @@ function chapitrefunction(){
 function inputTextfunction(){
  var myVid=document.getElementById("myVideo_html5_api");
  var time=Math.round(myVid.currentTime);
- $("#tableInput").html("<tr><th>Temps</th><th>Intitulé</th><th>x</th><th>y</th></tr>")
+ $("#tableInput").html("<tr><th>Temps</th><th>Intitulé</th><th>X</th><th>y</th></tr>")
  $("#tableInput").append("<tr align='center'>"
                                 +"<td><input class='form-control' min=1 type='number' name='timeInput' id='timeInput' size='5' value='"+time+"'/></td>"
 								+"<td><input class='form-control' type='text' name='msgInput' id='msgInput' size=60 /></td>"	
-								+"<td><input class='form-control' min=0 type='number' name='xinputText' id='xinputText'  required></td>"		
-								+"<td><input class='form-control' min=0 type='number' name='yinputText' id='yinputText'  required></td>"
+								+"<td><input class='form-control' min=0 type='number' name='xinputText' id='xinputText' value=300  required></td>"		
+								+"<td><input class='form-control' min=0 type='number' name='yinputText' id='yinputText' value=200 required></td>"
 						+"</tr>");  
  $("#submitButton").html("<button class='btn' onclick=\"submitButton('inputText');\">Enregistrer</button>");
 }
@@ -113,17 +113,20 @@ function submitForm(){
 
 function getText(){
 	var xmyVid=document.getElementById("myVideo_html5_api").getAttribute("width");
-	//ratio taille lecteur cacophony/taille lecteur html5
-	var xratio=854/600;
-	//alert(xratio);
-	var yratio=480/400;
+
 	var textData={};
 	var rows=[];
 	
 	var textTable=$("tr.text");
 	$(textTable).each(function(){
 		var i=$(this).attr("id");
-		rows.push({"id":i,"begin":$("input[id='beginText"+i+"']").val(),"end":$("input[id='endText"+i+"']").val(),"msg":$("input[id='msgText"+i+"']").val(),"x":$("input[id='xText"+i+"']").val()*xratio,"y":$("input[id='yText"+i+"']").val()*yratio});
+		//ratio taille lecteur cacophony/taille lecteur html5
+		var xratio=854/600;
+		//alert(xratio);
+		var yratio=480/400;
+		var x=$("input[id='xText"+i+"']").val()*xratio;
+		var y=$("input[id='yText"+i+"']").val()*yratio;
+		rows.push({"id":i,"begin":$("input[id='beginText"+i+"']").val(),"end":$("input[id='endText"+i+"']").val(),"msg":$("input[id='msgText"+i+"']").val(),"x":x,"y":y});
 	});
 	textData.rows=rows;
 	return textData;
@@ -179,7 +182,13 @@ function getInputText(){
 	var inputTable=$("tr.inputText");
 	$(inputTable).each(function(){
 		var i=$(this).attr("id");
-		rows.push({"id":i,"time":$("input[id='time"+i+"']").val(),"msg":$("input[id='msg"+i+"']").val(),"x":$("input[id='xinputText"+i+"']").val(),"y":$("input[id='yinputText"+i+"']").val()});
+		//ratio taille lecteur cacophony/taille lecteur html5
+		var xratio=854/600;
+		//alert(xratio);
+		var yratio=480/400;
+		var x=$("input[id='xinputText"+i+"']").val()*xratio;
+		var y=$("input[id='yinputText"+i+"']").val()*yratio;
+		rows.push({"id":i,"time":$("input[id='time"+i+"']").val(),"msg":$("input[id='msg"+i+"']").val(),"x":x,"y":y});
 	});
 	inputTextData.rows=rows;
 	return inputTextData;
@@ -318,7 +327,7 @@ function AddInputText(row){
 	if(row==""){
 		var timeValue=$("input[id='timeInput']").val();
 		var msgValue=$("input[id='msgInput']").val();
-		var x=$("input[id='xinputTextnput']").val();
+		var x=$("input[id='xinputText']").val();
 		var y=$("input[id='yinputText']").val();
 	}else{
 		var timeValue=row.time;

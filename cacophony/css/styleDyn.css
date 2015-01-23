@@ -28,7 +28,7 @@ h1 { font: bold 32px Helvetica, Arial, Sans-Serif; letter-spacing: -1px; padding
 p { margin: 0 0 15px 0; }
  
 nav ul { 
-    list-style: none; background: #154c85; padding: 5px 20px; width: 97.6%; position: relative; 
+    list-style: none; background: #333333; padding: 5px 20px; width: 97.6%; position: relative; 
     left: -9px;
 }
 nav ul li { display: inline; }
