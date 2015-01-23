@@ -52,10 +52,10 @@ function writeInputText($inputText,$fp,$username,$realname){
 	$inputTextRows=$inputText->rows;
 
 	foreach($inputTextRows as $row){
-	 $write="_s[".$row->time."]=[{a:'input_text', d:{msg:\"";
+	 $write="_s[".$row->time."]=[{a:'input_text_lp', d:{msg:\"";
 	 $write.=$row->msg;
 	 $write.="\",thanks:\"Thanks for your input\",
-		save_to: 'utils/save_input.php?questionName=".$row->msg."&username=".$username."&realname=".$realname."'}},{a:'pause'}]; \n";
+		save_to: 'utils/save_input.php?questionName=".$row->msg."&username=".$username."&realname=".$realname."',top:".$row->x.",left:".$row->y."}},{a:'pause'}]; \n";
 	 fwrite ($fp,$write);
 	}
 }
