@@ -5,11 +5,11 @@
 
 require_once(dirname(dirname(dirname(dirname(dirname(__FILE__))))).'/config.php');
 Global $USER;
-$username=$USER->username; 
+$userid=$USER->id; 
 $realname=$_POST["realname"];
 
-$filename='../server/php/StoryFile/'.$username.'/'.$realname.'.js';
-$fileDir='../server/php/StoryFile/'.$username;
+$filename='../server/php/StoryFile/'.$userid.'/'.$realname.'.js';
+$fileDir='../server/php/StoryFile/'.$userid;
 if(!file_exists($fileDir)){
 	mkdir($fileDir);
 }
@@ -19,7 +19,7 @@ fwrite ($fp, "_s[0] = [
 fclose ($fp);
 
 $data=$_POST["data"];
-$file='../server/php/StoryFile/'.$username.'/info_'.$realname.'.json';
+$file='../server/php/StoryFile/'.$userid.'/info_'.$realname.'.json';
 $fb= fopen ($file, 'w');
 fwrite ($fb, $data);
 fclose ($fb);
@@ -30,12 +30,12 @@ fwrite ($fp, "\n");
 $data=json_decode($data);
 writeText($data->text,$fp);
 
-writeInputText($data->inputText,$fp,$username,$realname);
+writeInputText($data->inputText,$fp,$userid,$realname);
 
 writeQCM($data->qcm,$fp);
 
 fclose ($fp);
-echo json_encode($username);
+echo json_encode($userid);
 
 function writeText($text,$fp){
 	$textRows=$text->rows;
@@ -47,7 +47,7 @@ function writeText($text,$fp){
 	}
 }
 
-function writeInputText($inputText,$fp,$username,$realname){
+function writeInputText($inputText,$fp,$userid,$realname){
 	
 	$inputTextRows=$inputText->rows;
 
@@ -55,7 +55,7 @@ function writeInputText($inputText,$fp,$username,$realname){
 	 $write="_s[".$row->time."]=[{a:'input_text_lp', d:{msg:\"";
 	 $write.=$row->msg;
 	 $write.="\",thanks:\"Thanks for your input\",
-		save_to: 'utils/save_input.php?questionName=".$row->msg."&username=".$username."&realname=".$realname."',top:".$row->x.",left:".$row->y."}},{a:'pause'}]; \n";
+		save_to: 'utils/save_input.php?questionName=".$row->msg."&userid=".$userid."&realname=".$realname."',top:".$row->x.",left:".$row->y."}},{a:'pause'}]; \n";
 	 fwrite ($fp,$write);
 	}
 }

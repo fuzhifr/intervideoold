@@ -31,13 +31,13 @@ function GetRequest() {
 	var Request = new Object();
 	Request = GetRequest();
 	var realname=Request['realname'];
-	var username=Request['username'];
-	var storyFile='server/php/StoryFile/'+username+'/'+realname+'.js';
+	var userid=Request['userid'];
+	var storyFile='server/php/StoryFile/'+userid+'/'+realname+'.js';
 	
 
 $(document).ready (function () {
     // chaque fois, on regarde le fichier buttoninfo pour créer les buttons automatiquement
-	var urlJSON='server/php/StoryFile/'+username+'/Info_'+realname+'.json';
+	var urlJSON='server/php/StoryFile/'+userid+'/Info_'+realname+'.json';
 	$.getJSON(urlJSON,function(data){
 		var len=data.button.rows.length;
 		var nChapitre=0;
@@ -59,9 +59,9 @@ $(document).ready (function () {
 	// with the different browsers at this time.
 	loadJS('storyJS',storyFile);
 	cacophony.setVideo (
-		'server/php/files/'+username+'/'+realname+'.mp4',
-		'server/php/files/'+username+'/'+realname+'.webm',
-		'server/php/files/'+username+'/'+realname+'.ogv'
+		'server/php/files/'+userid+'/'+realname+'.mp4',
+		'server/php/files/'+userid+'/'+realname+'.webm',
+		'server/php/files/'+userid+'/'+realname+'.ogv'
 	);
 
 	cacophony.init ();
@@ -71,7 +71,7 @@ $(document).ready (function () {
 });
 
  function ajouteButton(){
- 	var urlJSON='server/php/StoryFile/'+username+'/Info_'+realname+'.json';
+ 	var urlJSON='server/php/StoryFile/'+userid+'/Info_'+realname+'.json';
      $.getJSON(urlJSON,function(data){
 		var len=data.button.rows.length;
 		if(len!=0){

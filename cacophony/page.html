@@ -18,14 +18,14 @@
 		type:"POST",
 		data:{repertoire:""},
 		success:function(data){	
-		var username=data.username;
+		var userid=data.userid;
 		 var webPath=getWebPath();
-		 webPath=webPath+"view.html?username="+username+"&realname=";
+		 webPath=webPath+"view.html?userid="+userid+"&realname=";
 		 $(data.fileList).each(function(){
 			var html="<tr><td>"+this.realname+"</td>"
 					+"<td>"+webPath+this.realname+"</td>";
 					if(this.isExist=="true"){
-						html+="<td> <button class='btn' onclick=\"downloadFile('"+this.realname+"','"+data.username+"')\">Télécharger</button></td></tr>";
+						html+="<td> <button class='btn' onclick=\"downloadFile('"+this.realname+"','"+data.userid+"')\">Télécharger</button></td></tr>";
 					}else{
 						html+="<td></td>";
 					}
@@ -34,13 +34,13 @@
 		}
 	});
 	});
-	function downloadFile(realname,username){
-		$.get("utils/downfile.php?realname="+realname+"&username="+username,function(data,status){
+	function downloadFile(realname,userid){
+		$.get("utils/downfile.php?realname="+realname+"&userid="+userid,function(data,status){
 			
 			if(data=="false"){	
 			   alert("il n'exites pas le fichier");
 			}else{
-				window.location="utils/downfile.php?realname="+realname+"&username="+username;
+				window.location="utils/downfile.php?realname="+realname+"&userid="+userid;
 			}	
 		});
 	}

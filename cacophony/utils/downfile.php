@@ -17,10 +17,10 @@ echo $contents;
 fclose($fileD); 
 }
 
-$username=$_GET['username'];
+$userid=$_GET['userid'];
 $realname=$_GET['realname'];
 
-$dir = "../server/php/inputTextResultat/".$username."/".$realname."/";
+$dir = "../server/php/inputTextResultat/".$userid."/".$realname."/";
 
 if (is_dir($dir)){
   if ($dh = opendir($dir)){

@@ -1,3 +1,9 @@
+<?php
+	//recuperer le nom de l'utilisateur
+	require_once((dirname(dirname(dirname(dirname(__FILE__))))).'/config.php');
+	Global $USER;
+	$username=$USER->username;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,13 +27,13 @@
 	<div id="page-wrap">
 
         <header>
-		  <h1>Bienvenue sur Learnphony</h1>
+		  <h1>Bienvenue sur Learnphony <?php echo $username?></h1>
 		
 		  <nav>
 		      <ul class="group">
-		          <li><a href="index.html">Accueil</a></li>
-		          <li><a href="pages.html">Pages créées</a></li>
-				  <li><a href="videoList.html">Vidéos</a></li>
+		          <li><a href="index.php">Accueil</a></li>
+		          <li><a href="pages.php">Pages créées</a></li>
+				  <li><a href="videoList.php">Vidéos</a></li>
 		      </ul>
 		  </nav>
 		</header>

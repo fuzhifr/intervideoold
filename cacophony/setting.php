@@ -1,7 +1,7 @@
 <?php
 	require_once((dirname(dirname(dirname(dirname(__FILE__))))).'/config.php');
 	Global $USER;
-	$username=$USER->username;
+	$userid=$USER->id;
 ?>
 <!DOCTYPE html>
 <html > 
@@ -23,7 +23,7 @@
 	Request = GetRequest();
 	var filename=Request['filename'];
 	var realname=filename.substring(0,filename.lastIndexOf("."));	
-	var username="<?php echo $username; ?>";
+	var userid="<?php echo $userid; ?>";
 $(document).ready(function(){
 
 	//si le video deja settings. charger les infos
@@ -59,9 +59,9 @@ $(document).ready(function(){
 		}
 	  }
 	});
-	var sourceMp4="server/php/files/<?php echo $username; ?>/"+realname+".mp4";
-	var sourceWebm="server/php/files/<?php echo $username; ?>/"+realname+".webm";
-	var sourceOgv="server/php/files/<?php echo $username; ?>/"+realname+".ogv";
+	var sourceMp4="server/php/files/<?php echo $userid; ?>/"+realname+".mp4";
+	var sourceWebm="server/php/files/<?php echo $userid; ?>/"+realname+".webm";
+	var sourceOgv="server/php/files/<?php echo $userid; ?>/"+realname+".ogv";
 	$("#sourceMp4").attr('src',sourceMp4);
 	$("#sourceWebm").attr('src',sourceWebm);
 	$("#sourceOgv").attr('src',sourceOgv);

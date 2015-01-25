@@ -45,8 +45,8 @@ class UploadHandler
         $this->response = array();
         $this->options = array(
             'script_url' => $this->get_full_url().'/',
-            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/'.$this->get_user_name().'/',
-            'upload_url' => $this->get_full_url().'/files/'.$this->get_user_name().'/',
+            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/'.$this->get_user_id().'/',
+            'upload_url' => $this->get_full_url().'/files/'.$this->get_user_id().'/',
             'user_dirs' => false,
             'mkdir_mode' => 0755,
             'param_name' => 'files',
@@ -198,14 +198,14 @@ class UploadHandler
             substr($_SERVER['SCRIPT_NAME'],0, strrpos($_SERVER['SCRIPT_NAME'], '/'));
     }
 
-    protected function get_user_name() {
+    protected function get_user_id() {
 		Global $USER;
-        return $USER->username;
+        return $USER->id;
     }
 
     protected function get_user_path() {
         if ($this->options['user_dirs']) {
-            return $this->get_user_name().'/';
+            return $this->get_user_id().'/';
         }
         return '';
     }
