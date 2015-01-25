@@ -19,7 +19,7 @@
  * @see uninstall_plugin()
  *
  * @package    mod
- * @subpackage intervideoold
+ * @subpackage learnphony
  * @copyright  2011 Your Name <your@email.adress>
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,6 +27,6 @@
 /**
  * Custom uninstallation procedure
  */
-function xmldb_intervideoold_uninstall() {
+function xmldb_learnphony_uninstall() {
     return true;
 }

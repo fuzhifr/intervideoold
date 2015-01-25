@@ -16,16 +16,16 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Library of interface functions and constants for module intervideoold
+ * Library of interface functions and constants for module learnphony
  *
  * All the core Moodle functions, neeeded to allow the module to work
  * integrated in Moodle should be placed here.
- * All the intervideoold specific functions, needed to implement all the module
+ * All the learnphony specific functions, needed to implement all the module
  * logic, should go to locallib.php. This will help to save some memory when
  * Moodle is performing actions across all modules.
  *
  * @package    mod
- * @subpackage intervideoold
+ * @subpackage learnphony
  * @copyright  2011 Your Name
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -33,7 +33,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 /** example constant */
-//define('intervideoold_ULTIMATE_ANSWER', 42);
+//define('learnphony_ULTIMATE_ANSWER', 42);
 
 ////////////////////////////////////////////////////////////////////////////////
 // Moodle core API                                                            //
@@ -46,7 +46,7 @@ defined('MOODLE_INTERNAL') || die();
  * @param string $feature FEATURE_xx constant for requested feature
  * @return mixed true if the feature is supported, null if unknown
  */
-function intervideoold_supports($feature) {
+function learnphony_supports($feature) {
     switch($feature) {
         case FEATURE_MOD_INTRO:         return true;
         default:                        return null;
@@ -54,51 +54,51 @@ function intervideoold_supports($feature) {
 }
 
 /**
- * Saves a new instance of the intervideoold into the database
+ * Saves a new instance of the learnphony into the database
  *
  * Given an object containing all the necessary data,
  * (defined by the form in mod_form.php) this function
  * will create a new instance and return the id number
  * of the new instance.
  *
- * @param object $intervideoold An object from the form in mod_form.php
- * @param mod_intervideoold_mod_form $mform
- * @return int The id of the newly inserted intervideoold record
+ * @param object $learnphony An object from the form in mod_form.php
+ * @param mod_learnphony_mod_form $mform
+ * @return int The id of the newly inserted learnphony record
  */
-function intervideoold_add_instance(stdClass $intervideoold, mod_intervideoold_mod_form $mform = null) {
+function learnphony_add_instance(stdClass $learnphony, mod_learnphony_mod_form $mform = null) {
     global $DB;
 
-    $intervideoold->timecreated = time();
+    $learnphony->timecreated = time();
 
     # You may have to add extra stuff in here #
 
-    return $DB->insert_record('intervideoold', $intervideoold);
+    return $DB->insert_record('learnphony', $learnphony);
 }
 
 /**
- * Updates an instance of the intervideoold in the database
+ * Updates an instance of the learnphony in the database
  *
  * Given an object containing all the necessary data,
  * (defined by the form in mod_form.php) this function
  * will update an existing instance with new data.
  *
- * @param object $intervideoold An object from the form in mod_form.php
- * @param mod_intervideoold_mod_form $mform
+ * @param object $learnphony An object from the form in mod_form.php
+ * @param mod_learnphony_mod_form $mform
  * @return boolean Success/Fail
  */
-function intervideoold_update_instance(stdClass $intervideoold, mod_intervideoold_mod_form $mform = null) {
+function learnphony_update_instance(stdClass $learnphony, mod_learnphony_mod_form $mform = null) {
     global $DB;
 
-    $intervideoold->timemodified = time();
-    $intervideoold->id = $intervideoold->instance;
+    $learnphony->timemodified = time();
+    $learnphony->id = $learnphony->instance;
 
     # You may have to add extra stuff in here #
 
-    return $DB->update_record('intervideoold', $intervideoold);
+    return $DB->update_record('learnphony', $learnphony);
 }
 
 /**
- * Removes an instance of the intervideoold from the database
+ * Removes an instance of the learnphony from the database
  *
  * Given an ID of an instance of this module,
  * this function will permanently delete the instance
@@ -107,16 +107,16 @@ function intervideoold_update_instance(stdClass $intervideoold, mod_intervideool
  * @param int $id Id of the module instance
  * @return boolean Success/Failure
  */
-function intervideoold_delete_instance($id) {
+function learnphony_delete_instance($id) {
     global $DB;
 
-    if (! $intervideoold = $DB->get_record('intervideoold', array('id' => $id))) {
+    if (! $learnphony = $DB->get_record('learnphony', array('id' => $id))) {
         return false;
     }
 
     # Delete any dependent records here #
 
-    $DB->delete_records('intervideoold', array('id' => $intervideoold->id));
+    $DB->delete_records('learnphony', array('id' => $learnphony->id));
 
     return true;
 }
@@ -130,7 +130,7 @@ function intervideoold_delete_instance($id) {
  *
  * @return stdClass|null
  */
-function intervideoold_user_outline($course, $user, $mod, $intervideoold) {
+function learnphony_user_outline($course, $user, $mod, $learnphony) {
 
     $return = new stdClass();
     $return->time = 0;
@@ -145,20 +145,20 @@ function intervideoold_user_outline($course, $user, $mod, $intervideoold) {
  * @param stdClass $course the current course record
  * @param stdClass $user the record of the user we are generating report for
  * @param cm_info $mod course module info
- * @param stdClass $intervideoold the module instance record
+ * @param stdClass $learnphony the module instance record
  * @return void, is supposed to echp directly
  */
-function intervideoold_user_complete($course, $user, $mod, $intervideoold) {
+function learnphony_user_complete($course, $user, $mod, $learnphony) {
 }
 
 /**
  * Given a course and a time, this module should find recent activity
- * that has occurred in intervideoold activities and print it out.
+ * that has occurred in learnphony activities and print it out.
  * Return true if there was output, or false is there was none.
  *
  * @return boolean
  */
-function intervideoold_print_recent_activity($course, $viewfullnames, $timestart) {
+function learnphony_print_recent_activity($course, $viewfullnames, $timestart) {
     return false;  //  True if anything was printed, otherwise false
 }
 
@@ -167,7 +167,7 @@ function intervideoold_print_recent_activity($course, $viewfullnames, $timestart
  *
  * This callback function is supposed to populate the passed array with
  * custom activity records. These records are then rendered into HTML via
- * {@link intervideoold_print_recent_mod_activity()}.
+ * {@link learnphony_print_recent_mod_activity()}.
  *
  * @param array $activities sequentially indexed array of objects with the 'cmid' property
  * @param int $index the index in the $activities to use for the next record
@@ -178,15 +178,15 @@ function intervideoold_print_recent_activity($course, $viewfullnames, $timestart
  * @param int $groupid check for a particular group's activity only, defaults to 0 (all groups)
  * @return void adds items into $activities and increases $index
  */
-function intervideoold_get_recent_mod_activity(&$activities, &$index, $timestart, $courseid, $cmid, $userid=0, $groupid=0) {
+function learnphony_get_recent_mod_activity(&$activities, &$index, $timestart, $courseid, $cmid, $userid=0, $groupid=0) {
 }
 
 /**
- * Prints single activity item prepared by {@see intervideoold_get_recent_mod_activity()}
+ * Prints single activity item prepared by {@see learnphony_get_recent_mod_activity()}
 
  * @return void
  */
-function intervideoold_print_recent_mod_activity($activity, $courseid, $detail, $modnames, $viewfullnames) {
+function learnphony_print_recent_mod_activity($activity, $courseid, $detail, $modnames, $viewfullnames) {
 }
 
 /**
@@ -197,23 +197,23 @@ function intervideoold_print_recent_mod_activity($activity, $courseid, $detail, 
  * @return boolean
  * @todo Finish documenting this function
  **/
-function intervideoold_cron () {
+function learnphony_cron () {
     return true;
 }
 
 /**
- * Returns an array of users who are participanting in this intervideoold
+ * Returns an array of users who are participanting in this learnphony
  *
  * Must return an array of users who are participants for a given instance
- * of intervideoold. Must include every user involved in the instance,
+ * of learnphony. Must include every user involved in the instance,
  * independient of his role (student, teacher, admin...). The returned
  * objects must contain at least id property.
  * See other modules as example.
  *
- * @param int $intervideooldid ID of an instance of this module
+ * @param int $learnphonyid ID of an instance of this module
  * @return boolean|array false if no participants, array of objects otherwise
  */
-function intervideoold_get_participants($intervideooldid) {
+function learnphony_get_participants($learnphonyid) {
     return false;
 }
 
@@ -223,7 +223,7 @@ function intervideoold_get_participants($intervideooldid) {
  * @example return array('moodle/site:accessallgroups');
  * @return array
  */
-function intervideoold_get_extra_capabilities() {
+function learnphony_get_extra_capabilities() {
     return array();
 }
 
@@ -232,21 +232,21 @@ function intervideoold_get_extra_capabilities() {
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Is a given scale used by the instance of intervideoold?
+ * Is a given scale used by the instance of learnphony?
  *
- * This function returns if a scale is being used by one intervideoold
+ * This function returns if a scale is being used by one learnphony
  * if it has support for grading and scales. Commented code should be
  * modified if necessary. See forum, glossary or journal modules
  * as reference.
  *
- * @param int $intervideooldid ID of an instance of this module
- * @return bool true if the scale is used by the given intervideoold instance
+ * @param int $learnphonyid ID of an instance of this module
+ * @return bool true if the scale is used by the given learnphony instance
  */
-function intervideoold_scale_used($intervideooldid, $scaleid) {
+function learnphony_scale_used($learnphonyid, $scaleid) {
     global $DB;
 
     /** @example */
-    if ($scaleid and $DB->record_exists('intervideoold', array('id' => $intervideooldid, 'grade' => -$scaleid))) {
+    if ($scaleid and $DB->record_exists('learnphony', array('id' => $learnphonyid, 'grade' => -$scaleid))) {
         return true;
     } else {
         return false;
@@ -254,18 +254,18 @@ function intervideoold_scale_used($intervideooldid, $scaleid) {
 }
 
 /**
- * Checks if scale is being used by any instance of intervideoold.
+ * Checks if scale is being used by any instance of learnphony.
  *
  * This is used to find out if scale used anywhere.
  *
  * @param $scaleid int
- * @return boolean true if the scale is used by any intervideoold instance
+ * @return boolean true if the scale is used by any learnphony instance
  */
-function intervideoold_scale_used_anywhere($scaleid) {
+function learnphony_scale_used_anywhere($scaleid) {
     global $DB;
 
     /** @example */
-    if ($scaleid and $DB->record_exists('intervideoold', array('grade' => -$scaleid))) {
+    if ($scaleid and $DB->record_exists('learnphony', array('grade' => -$scaleid))) {
         return true;
     } else {
         return false;
@@ -273,44 +273,44 @@ function intervideoold_scale_used_anywhere($scaleid) {
 }
 
 /**
- * Creates or updates grade item for the give intervideoold instance
+ * Creates or updates grade item for the give learnphony instance
  *
  * Needed by grade_update_mod_grades() in lib/gradelib.php
  *
- * @param stdClass $intervideoold instance object with extra cmidnumber and modname property
+ * @param stdClass $learnphony instance object with extra cmidnumber and modname property
  * @return void
  */
-function intervideoold_grade_item_update(stdClass $intervideoold) {
+function learnphony_grade_item_update(stdClass $learnphony) {
     global $CFG;
     require_once($CFG->libdir.'/gradelib.php');
 
     /** @example */
     $item = array();
-    $item['itemname'] = clean_param($intervideoold->name, PARAM_NOTAGS);
+    $item['itemname'] = clean_param($learnphony->name, PARAM_NOTAGS);
     $item['gradetype'] = GRADE_TYPE_VALUE;
-    $item['grademax']  = $intervideoold->grade;
+    $item['grademax']  = $learnphony->grade;
     $item['grademin']  = 0;
 
-    grade_update('mod/intervideoold', $intervideoold->course, 'mod', 'intervideoold', $intervideoold->id, 0, null, $item);
+    grade_update('mod/learnphony', $learnphony->course, 'mod', 'learnphony', $learnphony->id, 0, null, $item);
 }
 
 /**
- * Update intervideoold grades in the gradebook
+ * Update learnphony grades in the gradebook
  *
  * Needed by grade_update_mod_grades() in lib/gradelib.php
  *
- * @param stdClass $intervideoold instance object with extra cmidnumber and modname property
+ * @param stdClass $learnphony instance object with extra cmidnumber and modname property
  * @param int $userid update grade of specific user only, 0 means all participants
  * @return void
  */
-function intervideoold_update_grades(stdClass $intervideoold, $userid = 0) {
+function learnphony_update_grades(stdClass $learnphony, $userid = 0) {
     global $CFG, $DB;
     require_once($CFG->libdir.'/gradelib.php');
 
     /** @example */
     $grades = array(); // populate array of grade objects indexed by userid
 
-    grade_update('mod/intervideoold', $intervideoold->course, 'mod', 'intervideoold', $intervideoold->id, 0, $grades);
+    grade_update('mod/learnphony', $learnphony->course, 'mod', 'learnphony', $learnphony->id, 0, $grades);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -328,12 +328,12 @@ function intervideoold_update_grades(stdClass $intervideoold, $userid = 0) {
  * @param stdClass $context
  * @return array of [(string)filearea] => (string)description
  */
-function intervideoold_get_file_areas($course, $cm, $context) {
+function learnphony_get_file_areas($course, $cm, $context) {
     return array();
 }
 
 /**
- * Serves the files from the intervideoold file areas
+ * Serves the files from the learnphony file areas
  *
  * @param stdClass $course
  * @param stdClass $cm
@@ -343,7 +343,7 @@ function intervideoold_get_file_areas($course, $cm, $context) {
  * @param bool $forcedownload
  * @return void this should never return to the caller
  */
-function intervideoold_pluginfile($course, $cm, $context, $filearea, array $args, $forcedownload) {
+function learnphony_pluginfile($course, $cm, $context, $filearea, array $args, $forcedownload) {
     global $DB, $CFG;
 
     if ($context->contextlevel != CONTEXT_MODULE) {
@@ -360,26 +360,26 @@ function intervideoold_pluginfile($course, $cm, $context, $filearea, array $args
 ////////////////////////////////////////////////////////////////////////////////
 
 /**
- * Extends the global navigation tree by adding intervideoold nodes if there is a relevant content
+ * Extends the global navigation tree by adding learnphony nodes if there is a relevant content
  *
  * This can be called by an AJAX request so do not rely on $PAGE as it might not be set up properly.
  *
- * @param navigation_node $navref An object representing the navigation tree node of the intervideoold module instance
+ * @param navigation_node $navref An object representing the navigation tree node of the learnphony module instance
  * @param stdClass $course
  * @param stdClass $module
  * @param cm_info $cm
  */
-function intervideoold_extend_navigation(navigation_node $navref, stdclass $course, stdclass $module, cm_info $cm) {
+function learnphony_extend_navigation(navigation_node $navref, stdclass $course, stdclass $module, cm_info $cm) {
 }
 
 /**
- * Extends the settings navigation with the intervideoold settings
+ * Extends the settings navigation with the learnphony settings
  *
- * This function is called when the context for the page is a intervideoold module. This is not called by AJAX
+ * This function is called when the context for the page is a learnphony module. This is not called by AJAX
  * so it is safe to rely on the $PAGE.
  *
  * @param settings_navigation $settingsnav {@link settings_navigation}
- * @param navigation_node $intervideooldnode {@link navigation_node}
+ * @param navigation_node $learnphonynode {@link navigation_node}
  */
-function intervideoold_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $intervideooldnode=null) {
+function learnphony_extend_settings_navigation(settings_navigation $settingsnav, navigation_node $learnphonynode=null) {
 }

@@ -17,25 +17,23 @@
 
 
 /**
- * English strings for intervideoold
+ * Chaines de caracteres en français pour ce module
  *
- * You can have a rather longer description of the file as well,
- * if you like, and it can span multiple lines.
  *
  * @package    mod
- * @subpackage intervideoold
+ * @subpackage learnphony
  * @copyright  2011 Your Name
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['modulename'] = 'intervideoold';
-$string['modulenameplural'] = 'intervideoolds';
-$string['modulename_help'] = 'Use the intervideoold module for creating web pages with interactive videos.';
-$string['intervideooldfieldset'] = 'Module fieldset';
-$string['intervideooldname'] = 'Instance name';
-$string['intervideooldname_help'] = 'This is the content of the help tooltip associated with the intervideooldname field. Markdown syntax is supported.';
-$string['intervideoold'] = 'Interactive video';
-$string['pluginadministration'] = 'intervideoold administration';
-$string['pluginname'] = 'intervideoold';
+$string['modulename'] = 'learnphony';
+$string['modulenameplural'] = 'learnphonys';
+$string['modulename_help'] = 'Ce module permet de créer des pages web avec des vidéos interactives. Il sera possible, avec l\'URL de ces pages, de les importer en tant que ressources via le module URL par exemple.';
+$string['learnphonyfieldset'] = 'Champ spécifique au module';
+$string['learnphonyname'] = 'Nom de l\'instance du module';
+$string['learnphonyname_help'] = 'C\'est le nom de cette activité. Attention, il ne peut y avoir qu\'une seule activité learnphony.';
+$string['learnphony'] = 'Outil de création de vidéos interactives';
+$string['pluginadministration'] = 'Administration de learnphony';
+$string['pluginname'] = 'learnphony';

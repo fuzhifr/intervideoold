@@ -22,12 +22,12 @@
  * if you like, and it can span multiple lines.
  *
  * @package    mod
- * @subpackage intervideoold
+ * @subpackage learnphony
  * @copyright  2011 Your Name
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-/// Replace intervideoold with the name of your module and remove this line
+/// Replace learnphony with the name of your module and remove this line
 
 require_once(dirname(dirname(dirname(__FILE__))).'/config.php');
 require_once(dirname(__FILE__).'/lib.php');
@@ -38,19 +38,19 @@ $course = $DB->get_record('course', array('id' => $id), '*', MUST_EXIST);
 
 require_course_login($course);
 
-add_to_log($course->id, 'intervideoold', 'view all', 'index.php?id='.$course->id, '');
+add_to_log($course->id, 'learnphony', 'view all', 'index.php?id='.$course->id, '');
 
 $coursecontext = get_context_instance(CONTEXT_COURSE, $course->id);
 
-$PAGE->set_url('/mod/intervideoold/index.php', array('id' => $id));
+$PAGE->set_url('/mod/learnphony/index.php', array('id' => $id));
 $PAGE->set_title(format_string($course->fullname));
 $PAGE->set_heading(format_string($course->fullname));
 $PAGE->set_context($coursecontext);
 
 echo $OUTPUT->header();
 
-if (! $intervideoolds = get_all_instances_in_course('intervideoold', $course)) {
-    notice(get_string('nointervideoolds', 'intervideoold'), new moodle_url('/course/view.php', array('id' => $course->id)));
+if (! $learnphonys = get_all_instances_in_course('learnphony', $course)) {
+    notice(get_string('nolearnphonys', 'learnphony'), new moodle_url('/course/view.php', array('id' => $course->id)));
 }
 
 if ($course->format == 'weeks') {
@@ -64,25 +64,25 @@ if ($course->format == 'weeks') {
     $table->align = array('left', 'left', 'left');
 }
 
-foreach ($intervideoolds as $intervideoold) {
-    if (!$intervideoold->visible) {
+foreach ($learnphonys as $learnphony) {
+    if (!$learnphony->visible) {
         $link = html_writer::link(
-            new moodle_url('/mod/intervideoold.php', array('id' => $intervideoold->coursemodule)),
-            format_string($intervideoold->name, true),
+            new moodle_url('/mod/learnphony.php', array('id' => $learnphony->coursemodule)),
+            format_string($learnphony->name, true),
             array('class' => 'dimmed'));
     } else {
         $link = html_writer::link(
-            new moodle_url('/mod/intervideoold.php', array('id' => $intervideoold->coursemodule)),
-            format_string($intervideoold->name, true));
+            new moodle_url('/mod/learnphony.php', array('id' => $learnphony->coursemodule)),
+            format_string($learnphony->name, true));
     }
 
     if ($course->format == 'weeks' or $course->format == 'topics') {
-        $table->data[] = array($intervideoold->section, $link);
+        $table->data[] = array($learnphony->section, $link);
     } else {
         $table->data[] = array($link);
     }
 }
 
-echo $OUTPUT->heading(get_string('modulenameplural', 'intervideoold'), 2);
+echo $OUTPUT->heading(get_string('modulenameplural', 'learnphony'), 2);
 echo html_writer::table($table);
 echo $OUTPUT->footer();
