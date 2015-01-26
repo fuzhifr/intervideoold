@@ -39,7 +39,7 @@
 		<section id="main-content">
 		<div id="guts">
 		
-		  <iframe src="page.html" frameborder="0" width=100% height=430px>
+		  <iframe src="page.html" frameborder="0" width=100% height=700px>
 			<p>Your browser does not support iframes.</p>
 		</iframe>
 		</div>
