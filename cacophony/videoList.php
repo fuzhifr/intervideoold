@@ -40,7 +40,7 @@
 		
 		<section id="main-content">
 		<div id="guts">
-		  <iframe src="uploadVideo.html" width=100% height=700px>
+		  <iframe src="uploadVideo.html" frameborder="0" width=100% height=430px>
 			<p>Your browser does not support iframes.</p>
 		</iframe>
 		</div>

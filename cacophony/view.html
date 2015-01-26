@@ -75,7 +75,7 @@ $(document).ready (function () {
      $.getJSON(urlJSON,function(data){
 		var len=data.button.rows.length;
 		if(len!=0){
-			var buttonHtml="<h3>Button</h3>";
+			var buttonHtml="";
 			var nButton=0;
 			for(var i=0;i<len;i++){
 				if(data.button.rows[i].hasOwnProperty("time")){
