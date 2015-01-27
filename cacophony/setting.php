@@ -55,7 +55,7 @@ $(document).ready(function(){
 			for(var i=0;i<text.rows.length;i++){
 					AddText(text.rows[i]);
 			}
-			$("#inputDiv").html("<button class='btn' type='submit'>Submit</button>");
+			$("#inputDiv").html("<button class='btn' type='submit'>Enregistrer</button>");
 		}
 	  }
 	});
@@ -84,7 +84,7 @@ var checkValue=$("#select_option").val();
 
 //submit le table pour creer une activite
 function submitButton(type){
-	$("#inputDiv").html("<button class='btn' type='submit'>Submit</button>");
+	$("#inputDiv").html("<button class='btn' type='submit'>Enregistrer</button>");
 	if(type=="text"){
 		AddText("");
 	}else if(type=="chapitre"){
@@ -113,14 +113,14 @@ function submitButton(type){
 <div class="row">
 	<div class="col-md-6">
 		<div class="col-sm-2">
-			<button onclick="addUnLigne()" class="btn">add</button>
+			<button onclick="addUnLigne()" class="btn">Ajouter</button>
 		</div>
 		<div class="col-sm-4">
 			<select id="select_option" class="form-control">
-			  <option value ="text">Text</option>
+			  <option value ="text">Texte</option>
 			  <option value ="chapitre">Chapitre</option>
-			  <option value="inputText">Input Text</option>
-			  <option value="jump">Jump to Button</option>
+			  <option value="inputText">Saisie de texte</option>
+			  <option value="jump">Aller à</option>
 			  <option value="qcm">QCM</option>
 			</select>
 		</div>
