@@ -47,7 +47,7 @@ $(document).ready (function () {
 				if(!data.button.rows[i].hasOwnProperty("time")){
 					nChapitre+=1;
 					buttonHtml+="<a href='#' onclick='jumpTo("+data.button.rows[i].jumpTo+")'>Chapitre "+nChapitre+"</a><p>"
-					buttonHtml+="Introduction："+data.button.rows[i].label+" <p>";
+					buttonHtml+=data.button.rows[i].label+" <p>";
 				}
 			}
 			 if(nChapitre!=0){
