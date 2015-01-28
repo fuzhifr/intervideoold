@@ -65,6 +65,12 @@ $(document).ready(function(){
 	$("#sourceMp4").attr('src',sourceMp4);
 	$("#sourceWebm").attr('src',sourceWebm);
 	$("#sourceOgv").attr('src',sourceOgv);
+
+	$("#myVideo").mousemove(function(e){
+	var Y = e.pageY-$('#myVideo').offset().top; 
+	var X = e.pageX-$('#myVideo').offset().left; 
+    $("span").text(" x : "+Math.round(X)+", y : " + Math.round(Y));
+	});
 });
 
 function addUnLigne(){

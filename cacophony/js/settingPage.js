@@ -14,7 +14,7 @@ function GetRequest() {
 
 //creer une champ pour entrer les infos de Text
 function textfunction(){
- var myVid=document.getElementById("myVideo_html5_api");
+ var myVid=$("#myVideo_html5_api");
  var time=Math.round(myVid.currentTime);
  $("#tableInput").html("<tr><th>Début</th><th>Fin</th><th>Texte</th><th>x</th><th>y</th></tr>")
  $("#tableInput").append("<tr align='center'>"
@@ -29,7 +29,7 @@ function textfunction(){
 
 //creer une champ pour entrer les infos de Chapitre
 function chapitrefunction(){
- var myVid=document.getElementById("myVideo_html5_api");
+ var myVid=$("#myVideo_html5_api");
  var time=Math.round(myVid.currentTime);
  $("#tableInput").html("<tr><th>Temps</th><th>Intitulé</th></tr>")
  $("#tableInput").append("<tr align='center'>"
@@ -42,7 +42,7 @@ function chapitrefunction(){
 
 //creer une champ pour entrer les infos de inputText
 function inputTextfunction(){
- var myVid=document.getElementById("myVideo_html5_api");
+ var myVid=$("#myVideo_html5_api");
  var time=Math.round(myVid.currentTime);
  $("#tableInput").html("<tr><th>Temps</th><th>Intitulé</th><th>x</th><th>y</th></tr>")
  $("#tableInput").append("<tr align='center'>"
@@ -56,7 +56,7 @@ function inputTextfunction(){
 
 //creer une champ pour entrer les infos de Button
 function jumpfunction(){
- var myVid=document.getElementById("myVideo_html5_api");
+ var myVid=$("#myVideo_html5_api");
  var time=Math.round(myVid.currentTime);
  $("#tableInput").html("<tr><th>Temps</th><th>Aller à</th><th>Texte du bouton</th></tr>")
  $("#tableInput").append("<tr align='center'>"
@@ -69,7 +69,7 @@ function jumpfunction(){
 
 //creer une champ pour entrer les infos de QCM
 function qcmfunction(){
- var myVid=document.getElementById("myVideo_html5_api");
+ var myVid=$("#myVideo_html5_api");
  var time=Math.round(myVid.currentTime);
  $("#tableInput").html("<tr><th>Temps</th><th>Question</th><th>Réponse</th><th>Aller à</th></tr>")
  $("#tableInput").append("<tr class='QCM' align='center'>"
@@ -112,7 +112,7 @@ function submitForm(){
 
 
 function getText(){
-	var xmyVid=document.getElementById("myVideo_html5_api").getAttribute("width");
+	var xmyVid=$("#myVideo_html5_api").attr("width");
 
 	var textData={};
 	var rows=[];
