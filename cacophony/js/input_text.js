@@ -56,11 +56,11 @@ function input_text (data) {
 	}
 
 	cacophony.html (
-		'<div style="width: ' + Math.round (cacophony.width * .6) + 'px; height: ' + Math.round (cacophony.height * .35) + 'px; background-color: rgba(255, 255, 255, .7); padding: 20px; text-align: left; border-radius: 10px">' +
+		'<div style="width: ' + Math.round (cacophony.width * .7) + 'px; height: ' + Math.round (cacophony.height * .35) + 'px; background-color: rgba(255, 255, 255, .7); padding: 20px; text-align: left; border-radius: 10px">' +
 		'<form onsubmit="return input_save (this)" style="display: inline">' +
 		'<p>' + data.msg + '</p>' +
 		'<p><input type="text" id="input-field" name="input-field" value="' + data.value + '" ' + autocomplete + ' style="border: 1px solid #666; width: 70%; height: 20px" />' +
-		'&nbsp;<input type="submit" value="Submit" />&nbsp;<a href="#" onclick="return input_cancel ()">Cancel</a></p>' +
+		'&nbsp;<input type="submit" value="Enregistrer" />&nbsp;<input type="button" onclick="return input_cancel ()" value="Annuler" ></p>' +
 		'</form></div>',data.top,data.left);
 }
 
