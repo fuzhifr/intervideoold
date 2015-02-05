@@ -23,7 +23,7 @@
 		 webPath=webPath+"view.html?userid="+userid+"&realname=";
 		 $(data.fileList).each(function(){
 			var html="<tr><td>"+this.realname+"</td>"
-					+"<td>"+webPath+this.realname+"</td>";
+					+"<td>"+webPath+this.realname.replace(/\s+/g,'%20')+"</td>";
 					if(this.isExist=="true"){
 						html+="<td> <button class='btn' onclick=\"downloadFile('"+this.realname+"','"+data.userid+"')\">Télécharger</button></td></tr>";
 					}else{
